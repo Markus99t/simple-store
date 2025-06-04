@@ -26,14 +26,14 @@ GymBeam Store je responzívna webová aplikácia simulujúca online obchod s pro
 ### Požiadavky
 
 - Node.js 18+
-- npm, yarn, pnpm alebo bun
+- npm, yarn alebo pnpm
 
 ### Inštalácia
 
 1. Klonujte repozitár:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Markus99t/simple-store.git
 cd simple-store
 ```
 
