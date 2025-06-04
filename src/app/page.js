@@ -20,7 +20,7 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold text-[#ff6b00] mb-6">
-            GYMBEAM
+            GymBeam
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 mb-8">
             Your Ultimate Fitness Destination
@@ -33,15 +33,9 @@ export default function Home() {
           <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
             <Link
               href="/login"
-              className="inline-block bg-[#ff6b00] text-white px-8 py-3 rounded-md font-medium hover:bg-[#e55a00] transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
+              className="inline-block bg-[#ff6b00] text-white px-8 py-3 rounded-md font-medium hover:bg-[#e55a00] shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
             >
               Sign In
-            </Link>
-            <Link
-              href="/products"
-              className="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-md font-medium hover:bg-gray-300 transition-colors"
-            >
-              Browse as Guest
             </Link>
           </div>
         </div>

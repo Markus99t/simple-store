@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,31 +10,15 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // Debug: Check if auth context is available
-  const authContext = useAuth();
-  console.log("Auth context:", authContext);
-  console.log("Login function:", authContext?.login);
-
-  const { login } = authContext;
+  const { login, user } = useAuth();
   const router = useRouter();
 
-  // Add safety check
-  if (!login) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">
-            Authentication Error
-          </h2>
-          <p className="text-gray-600">
-            AuthProvider is not properly configured. Please check your app
-            setup.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    // If user is already logged in, redirect to products
+    if (user) {
+      router.push("/products");
+    }
+  }, [user, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,8 +32,7 @@ export default function LoginPage() {
         setError(result.error || "Login failed. Please try again.");
       }
     } catch (err) {
-      console.error("Login error:", err);
-      setError("An unexpected error occurred. Please try again.");
+      setError("An error occurred during login. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -60,7 +43,7 @@ export default function LoginPage() {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h1 className="text-center text-4xl font-bold text-[#ff6b00]">
-            GYMBEAM
+            GymBeam
           </h1>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account

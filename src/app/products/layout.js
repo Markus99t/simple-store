@@ -1,13 +1,11 @@
-"use client";
-
-import Header from "@/components/Header";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import ProductNavigation from "@/components/ProductNavigation";
 
 export default function ProductsLayout({ children }) {
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-gray-50">
-        <Header />
+        <ProductNavigation />
         <main>{children}</main>
       </div>
     </ProtectedRoute>

@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GymBeam Store
 
-## Getting Started
+GymBeam Store je responzívna webová aplikácia simulujúca online obchod s produktmi rôzneho druhu. Aplikácia obsahuje autentifikáciu používateľov, prehliadanie produktov, filtrovanie podľa kategórií a detailné zobrazenie produktov.
 
-First, run the development server:
+## ✨ Funkcie
+
+- **Autentifikácia používateľov** - prihlásenie/odhlásenie cez FakeStore API
+- **Responzívny dizajn** - optimalizované pre desktop, tablet a mobil
+- **Prehliadanie produktov** - grid view s možnosťou filtrovania
+- **Filtrovanie podľa kategórií** - jednoduché prepínanie medzi kategóriami
+- **Detail produktu** - detailné informácie, obrázky a hodnotenia
+- **Skeleton loading** - smooth loading stavy pre lepší UX
+- **Chránené trasy** - prístup k produktom iba pre prihlásených používateľov
+- **SSG optimalizácia** - statické generovanie stránok pre produkty
+
+## 🛠️ Tech Stack
+
+- **Next.js 15** - React framework s App Router
+- **React 19** - najnovšia verzia React
+- **Tailwind CSS 4** - utility-first CSS framework
+- **FakeStore API** - mock API pre produkty a autentifikáciu
+- **ESLint** - linting a code quality
+
+## 🚀 Spustenie projektu
+
+### Požiadavky
+
+- Node.js 18+
+- npm, yarn, pnpm alebo bun
+
+### Inštalácia
+
+1. Klonujte repozitár:
+
+```bash
+git clone <repository-url>
+cd simple-store
+```
+
+2. Nainštalujte závislosti:
+
+```bash
+npm install
+# alebo
+yarn install
+# alebo
+pnpm install
+```
+
+3. Spustite development server:
 
 ```bash
 npm run dev
-# or
+# alebo
 yarn dev
-# or
+# alebo
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Otvorte [http://localhost:3000](http://localhost:3000) v prehliadači
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Demo prístupové údaje
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pre testovanie aplikácie použite:
 
-## Learn More
+- **Username:** `johnd`
+- **Password:** `m38rmF$`
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Štruktúra projektu
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/                        # Next.js App Router
+│   ├── globals.css             # Globálne CSS štýly
+│   ├── layout.js               # Root layout
+│   ├── page.js                 # Domovská stránka
+│   ├── login/                  # Prihlásenie
+│   └── products/               # Produkty
+│       ├── layout.js           # Layout pre produkty
+│       ├── page.js             # Zoznam produktov
+│       └── [id]/               # Detail produktu
+├── components/                 # React komponenty
+│   ├── Header.js               # Hlavička
+│   ├── ProductDetail.js        # Detail produktu
+│   ├── ProductsList.js         # Zoznam produktov
+│   ├── ProductNavigation.js    # Navigácia
+│   ├── ProtectedRoute.js       # Ochrana trás
+│   └── Skeletons.js            # Loading komponenty
+└── contexts/
+    └── AuthContext.js          # Context pre autentifikáciu
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Dizajn a UX
 
-## Deploy on Vercel
+- **Farebná schéma:** Orange (#ff6b00) ako primárna farba GymBeam brand
+- **Responzívny grid:** Automatické prispôsobenie pre rôzne veľkosti obrazoviek
+- **Smooth animácie:** Hover efekty a prechody pre lepší UX
+- **Loading stavy:** Skeleton komponenty počas načítavania
+- **Accessibility:** Semantické HTML a ARIA atribúty
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Dostupné skripty
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev      # Spustenie development servera s Turbopack
+npm run build    # Build produkčnej verzie
+npm run start    # Spustenie produkčnej verzie
+npm run lint     # ESLint kontrola kódu
+```
+
+## 🌐 API Endpointy
+
+Aplikácia používa [FakeStore API](https://fakestoreapi.com/):
+
+- `GET /products` - Zoznam všetkých produktov
+- `GET /products/{id}` - Detail produktu
+- `GET /products/categories` - Kategórie produktov
+- `POST /auth/login` - Prihlásenie používateľa
+- `GET /users/1` - Údaje používateľa
+
+## 📱 Responzívnosť
+
+- **Mobile:** 1 kolóna v grid
+- **Tablet:** 2 kolóny v grid
+- **Desktop:** 3-4 kolóny v grid
+- **Navigation:** Hamburger menu na mobiloch
+
+## 🔒 Autentifikácia
+
+- Local storage pre uchovanie auth tokenu
+- Context API pre globálny stav
+- Automatické presmerovanie na login pri neautorizovanom prístupe
+- Perzistencia session medzi reloadmi
+
+## ⚡ Optimalizácie
+
+- **SSG:** Statické generovanie pre produktové stránky
+- **Image Optimization:** Next.js Image komponenty
+- **Code Splitting:** Automatické rozdelenie bundles
+- **Caching:** ISR s revalidation na 1 hodinu
+- **Turbopack:** Rýchly development bundler
+
+## 📄 Licencia
+
+Tento projekt je určený na vzdelávacie účely a demonštráciu Next.js možností.
+
+---
+
+Vyvinuté s ❤️ pomocou Next.js a Tailwind CSS

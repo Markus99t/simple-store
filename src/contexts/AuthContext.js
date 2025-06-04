@@ -38,8 +38,6 @@ export function AuthProvider({ children }) {
       password,
     });
 
-    console.log("Login request:", body);
-
     try {
       const response = await fetch("https://fakestoreapi.com/auth/login", {
         method: "POST",
@@ -56,7 +54,6 @@ export function AuthProvider({ children }) {
       }
 
       const data = await response.json();
-      console.log("Login response:", data);
 
       if (!data.token) {
         throw new Error("No token received from server");
@@ -73,7 +70,6 @@ export function AuthProvider({ children }) {
       }
 
       const userData = await userResponse.json();
-      console.log("User data:", userData);
 
       setUser(userData);
       localStorage.setItem("user", JSON.stringify(userData));
